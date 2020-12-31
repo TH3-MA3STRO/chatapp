@@ -27,11 +27,31 @@
         </div>
     </div>
 </div>
+<%- include('partials/bottomnav') %> 
 <script>
 //    document.getElementById('mail2').addEventListener('click',(e)=>{
  //       document.getElementsByClassName('s')[0].style.margin = '2rem auto'
    //     document.getElementsByClassName('buttons')[0].style.display = 'inline'
      //   document.getElementsByClassName('buttons')[1].style.display = 'inline'
     //})
-
+    function changebtns(){
+        const btns = document.getElementsByClassName('buttons')
+        for (let index = 0; index < btns.length; index++) {
+            const btn = btns[index];
+            if(window.innerWidth<=360){
+                if(btn.classList.contains('btn-accept')){
+                    btn.innerHTML = `<i class="fas fa-check"></i> `
+                } else {
+                    btn.innerHTML = `<i class="fas fa-times"></i> `
+                }
+            } else {
+                if(btn.classList.contains('btn-accept')){
+                    btn.innerHTML = `Accept <i class="fas fa-check"></i> `
+                } else {
+                    btn.innerHTML = ` Decline <i class="fas fa-times"></i> `
+                }
+            }
+        }
+    }
+    changebtns()
 </script>

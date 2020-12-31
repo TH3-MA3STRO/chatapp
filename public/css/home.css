@@ -3,10 +3,11 @@ body {
   margin: 0;
   padding: 0;
   -webkit-box-sizing: border-box;
-          box-sizing: border-box;
+  box-sizing: border-box;
   font-family: "Jost", sans-serif;
   background-color: #e0fcf4;
   background-size: cover;
+  position: relative;
   /* overflow: hidden; */
 }
 
@@ -21,7 +22,7 @@ a {
   text-decoration: none;
   color: rgba(0, 0, 0, 0.692);
 }
-.subbed{
+.subbed {
   color: rgba(11, 12, 12, 0.753);
 }
 .navbar {
@@ -32,16 +33,22 @@ a {
   background-color: #35ebb8;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-transform: translateZ(1000px);
-          transform: translateZ(1000px);
+  transform: translateZ(1000px);
 }
 
 .navbar .brand {
   padding: 5px 15px;
-  font-size: small;
   width: 50%;
+  display: flex;
+  align-items: center;
+}
+.heading{
+  font-size: 7vw;
+  /* font-size: 4vmax; */
+  font-size: 7vmin;
 }
 
 .navbar .nav-menus {
@@ -50,14 +57,14 @@ a {
   display: flex;
   -webkit-box-orient: horizontal;
   -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
+  -ms-flex-direction: row;
+  flex-direction: row;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
   width: 50%;
   padding-right: 30px;
 }
@@ -91,22 +98,22 @@ a {
   z-index: 12;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .sidenav .aside .ac-info {
   width: 100%;
   font-size: larger;
-  padding: .8em;
+  padding: 0.8em;
   padding-left: 0.625em;
   padding-top: 0.625em;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
 }
 
 .sidenav .aside .ac-info .test {
@@ -128,8 +135,8 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   padding: 0.5em;
   overflow: hidden;
 }
@@ -178,22 +185,22 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-item-align: end;
-      align-self: flex-end;
+  align-self: flex-end;
 }
 
 .action {
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   width: 60%;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   position: relative;
 }
 
@@ -214,7 +221,7 @@ a {
   right: 0;
   border: 1px solid #35ebb8;
   -webkit-transform: scale(0, 1);
-          transform: scale(0, 1);
+  transform: scale(0, 1);
   z-index: 999;
   -webkit-transition: 400ms ease transform;
   transition: 400ms ease transform;
@@ -222,7 +229,7 @@ a {
 
 .action a:hover::after {
   -webkit-transform: scale(1, 1);
-          transform: scale(1, 1);
+  transform: scale(1, 1);
 }
 
 .action a:hover {
@@ -236,10 +243,10 @@ a {
   width: 70%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -ms-flex-item-align: center;
-      align-self: center;
+  align-self: center;
   margin: 2em 1em;
   background-color: rgba(173, 173, 173, 0.116);
 }
@@ -249,7 +256,30 @@ a {
   -webkit-transition: ease-in-out 400ms;
   transition: ease-in-out 400ms;
 }
-
+.bottombar {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  color: white;
+  height: 2.5rem;
+}
+.bottombar .navbar {
+  display: flex;
+  align-items: center;
+  height: 100%;
+  justify-content: space-evenly;
+}
+.bottombar .navbar .fas {
+  font-size: large;
+  color: black;
+}
+.fas {
+  transition: linear 0.2s;
+}
+.bottom .navbar .fas:hover {
+  color: white;
+}
 .inbox .mails:hover {
   background-color: rgba(35, 37, 37, 0.336);
 }
@@ -260,16 +290,16 @@ a {
   display: flex;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
+  -ms-flex-direction: column;
+  flex-direction: column;
   height: 3em;
   width: 4em;
   -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
   -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
   position: absolute;
   left: 0;
 }
@@ -284,7 +314,7 @@ a {
 
 .change #l1 {
   -webkit-transform: rotate(-45deg) translate(-8px, 7px);
-          transform: rotate(-45deg) translate(-8px, 7px);
+  transform: rotate(-45deg) translate(-8px, 7px);
 }
 
 .change #l2 {
@@ -293,20 +323,47 @@ a {
 
 .change #l3 {
   -webkit-transform: rotate(45deg) translate(-8px, -7px);
-          transform: rotate(45deg) translate(-8px, -7px);
+  transform: rotate(45deg) translate(-8px, -7px);
 }
 
-.text-box{
+.text-box {
   display: block;
 }
-.error-txt{
+.error-txt {
   width: 50%;
   text-align: center;
   margin: 10rem auto;
 }
 @media (max-width: 1120px) {
-  .ac-info{
+  .ac-info {
     flex-direction: column;
-    margin: auto
+    margin: auto;
   }
-}/*# sourceMappingURL=first.css.map */
+}
+@media (max-width: 190px) {
+  .heading{
+    display: none;
+  }
+}
+@media (max-width: 620px) {
+  .sidenav {
+    display: none;
+  }
+  .three-lines {
+    display: none;
+  }
+  .three-lines .lines {
+    display: none;
+  }
+  .bottombar {
+    display: block;
+  }
+  /* .navbar div.nav-menus {
+    display: none;
+  } */
+  .navbar .brand{
+    width: 100%;
+  }
+}
+
+/*# sourceMappingURL=first.css.map */

@@ -35,7 +35,16 @@
       </form>
     </div>
   </div>
-  <%- include('partials/nav') %>
+  <div class="navbar">
+    <div onclick="location.href='/home'" class="brand">
+        <h1 class="heading"><i class="fas fa-smile"></i> ChatBox</h1>
+    </div>
+    <div class="nav-menus">
+        <!-- <a href="#">Tools</a> -->
+        <a class="home" href="/home"><i class="fas fa-chevron-left"></i></a>
+        <a href="#"><i class="fas fa-cog"></i></a>
+    </div>
+</div>
   <div class="chat-container">
     <!-- <header class="chat-header">
       <h1><i class="fas fa-smile"></i> ChatBox</h1>
