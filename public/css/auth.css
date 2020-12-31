@@ -1,0 +1,267 @@
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+JP&display=swap");
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Noto Sans JP", sans-serif;
+  font-size: 70%;
+}
+.error{
+    position: absolute;
+    /* line-height: .83rem; */
+    font-size: .8rem;
+}
+.error-txt{
+    display: none;
+    color: rgb(255, 10, 10);
+}
+.container {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 2.5vh auto;
+  height: 95vh;
+  width: 95vw;
+  position: relative;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  text-align: center;
+}
+input{
+    box-shadow: none;
+}
+.main {
+  width: 100%;
+  text-align: left;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-image: -webkit-gradient(linear, left top, left bottom, from(#fc4a1a), to(#f7b733));
+  background-image: linear-gradient(to bottom, #fc4a1a, #f7b733);
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+}
+.join-main{
+    width: 60%;
+    margin: auto;
+
+}
+.join-header{
+  margin: auto;
+  width: 50%;
+  text-align: center;
+}
+.heading{
+  margin-bottom: .6rem;
+}
+.success{
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  border: 1px green solid;
+  background-color: rgba(0, 128, 0, 0.267);
+  padding: .3rem .5rem;
+  margin-bottom: .2rem;
+}
+.fail{
+  font-weight: bold;
+  display: inline-block;
+  width: 100%;
+  border: 1px red solid;
+  background-color: rgba(255, 0, 0, 0.267);
+  padding: .3rem .5rem;
+}
+.main-left {
+  height: 100%;
+  width: 30%;
+  font-size: 1rem;
+  text-align: center;
+  position: relative;
+}
+
+.main-left div {
+  position: relative;
+  width: 80%;
+  margin: auto;
+  top: 30%;
+  -webkit-transform: translateY(-30%);
+          transform: translateY(-30%);
+}
+
+.main-left h1,
+.main-left p {
+  display: inline-block;
+  width: 100%;
+  text-align: center;
+  color: white;
+}
+
+.main-right {
+  width: 70%;
+  height: -webkit-calc(100% - 6px);
+  margin: 3px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-item-align: center;
+      align-self: center;
+  z-index: 3;
+  background-color: #fff;
+}
+
+.form {
+  width: 80%;
+  margin: auto;
+}
+
+.form-element {
+  position: relative;
+  margin: auto;
+  margin-bottom: 1.8rem; 
+  /* originaL 1REM */
+  width: 70%;
+  font-size: 1rem;
+}
+
+.form-element input {
+  background-color: transparent;
+  width: 70%;
+  height: 100%;
+  padding-top: 2em;
+  border: none;
+  font-size: 0.9rem;
+  outline: none;
+  color: #000000;
+  -webkit-transform: translateY(-4px);
+          transform: translateY(-4px);
+}
+
+.form-element input:focus + .label .animated-label,
+.form-element input:valid + .label .animated-label {
+  -webkit-transform: translateY(-85%);
+          transform: translateY(-85%);
+  font-size: 0.9rem;
+  color: rgb(255, 38, 0);
+  font-weight: 400;
+}
+
+.form-element input:focus + .label,
+.form-element input:valid + .label {
+  border-bottom: #fc4a1a 2px solid;
+}
+
+.form-element .label {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-bottom: 2px solid #0000003d;
+  pointer-events: none;
+}
+
+.form-element .label .animated-label {
+  position: absolute;
+  font-weight: 500;
+  left: 0;
+  bottom: 0.2em;
+  pointer-events: none;
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+}
+
+.form-util {
+  text-align: center;
+}
+
+.form-util input {
+  margin-top: 1rem;
+  font-size: 1rem;
+  display: inline-block;
+  width: 40%;
+  border: 2px solid #fc4a1a;
+  padding: 0.9rem 0.5rem;
+  border-radius: 5px;
+  -webkit-transition: 0.4s ease all;
+  transition: 0.4s ease all;
+  outline: none;
+  background-color: rgba(0, 0, 0, 0);
+}
+
+.form-util input:hover {
+  color: #fff;
+  border-radius: 6px;
+  background-color: #fc4a1a;
+}
+
+@media screen and (max-width: 615px) {
+  .main {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    background: none;
+    margin-top: 3em;
+  }
+  .main-left {
+    width: 90%;
+    height: 10%;
+  }
+  .main-left div {
+    top: 0;
+    -webkit-transform: none;
+            transform: none;
+  }
+  .main-left div h1,
+  .main-left div p {
+    background-image: -webkit-gradient(linear, left top, right top, from(#fc4a1a), to(#f7b733));
+    background-image: linear-gradient(to right, #fc4a1a, #f7b733);
+    background-clip: text;
+    -webkit-background-clip: text;
+    color: transparent;
+  }
+  .main-right {
+    margin: 3em 0 0 0;
+    background-color: transparent;
+  }
+  .form {
+    width: 95%;
+    margin: 0 auto;
+  }
+  .form-element {
+    width: 90%;
+  }
+  .form-element .label {
+    border-bottom-color: #fc4b1a50;
+  }
+  .form-element .animated-label {
+    color: #fc4a1a;
+  }
+  .form-util input {
+    width: 45%;
+    margin-top: 1em;
+    padding: 0.6rem 0.5rem;
+    font-size: 3vw;
+  }
+}
+
+@media screen and (max-width: 350px) {
+  .form-util input {
+    width: 90%;
+    font-size: 1rem;
+  }
+}
+/*# sourceMappingURL=main.css.map */

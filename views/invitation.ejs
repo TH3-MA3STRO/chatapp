@@ -1,0 +1,37 @@
+<%- include('partials/head') %> 
+<%- include('partials/nav') %>
+<link rel="stylesheet" href="/css/invite.css">
+<div class="container" id="shift" style="position: relative;">    
+    <div class="content">
+        <div class="inbox">
+            <% if (invite.length>0) { %> <% for( let i = 0; i < invite.length; i++ ) { %>
+                <div class="mails" id="mail-<%= i %>">
+                    <h2>From: <%= invite[i].roomName %> </h2>
+                    <p>
+                        <%= invite[i].senderName %>(@<%= invite[i].senderUsername %>) has inivited you to join <%= invite[i].roomName %>
+                    </p>
+                    <div class="s">
+                        <a class="buttons btn-accept" href="/invitation/<%= invite[i]._id %>/accept ">Accept <i class="fas fa-check"></i></a>
+                        <a class="buttons btn-decline" href="/invitation/<%= invite[i]._id %>/decline ">Decline <i class="fas fa-times"></i></a>
+                    </div>
+                </div>
+            <% } %>
+            <% } else { %>
+                <div class="error-txt">
+                    <h2 class="txt">
+                        No invites pending...
+                        <i class="fas fa-exclamation"></i>
+                    </h2>
+                </div>
+            <% } %>
+        </div>
+    </div>
+</div>
+<script>
+//    document.getElementById('mail2').addEventListener('click',(e)=>{
+ //       document.getElementsByClassName('s')[0].style.margin = '2rem auto'
+   //     document.getElementsByClassName('buttons')[0].style.display = 'inline'
+     //   document.getElementsByClassName('buttons')[1].style.display = 'inline'
+    //})
+
+</script>

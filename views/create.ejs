@@ -1,0 +1,40 @@
+
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<link
+			rel="stylesheet"
+			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
+			crossorigin="anonymous"
+		/>
+		<link rel="stylesheet" href="/css/home.css" />
+		<link rel="stylesheet" href="/css/auth.css" />
+		<title>ChatBox App</title>
+	</head>
+	<body style="overflow:hidden;">
+		<%- include('partials/nav') %> 
+		<div class="join-container">
+			<main class="join-main">
+				<header class="join-header">
+					<h1>Create Room</h1>
+				</header>
+				<form action="/create" method="POST" class="form" novalidate>
+                    <div class="form-element">
+						<input type="text" name="name" autocomplete="off" required id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
+						<label for="name" class="label"><span class="animated-label">Name</span></label>
+						<div class="error">
+							<p class="error-txt" id="name-e">Please fill out this field</p>
+						</div></div>
+                    <div class="form-util">
+                        <input id="submit" type="submit" value="Create Account">
+                    </div>
+                </form>
+			</main>
+		</div>
+	</body>
+<script src="js/validation.js"></script>
+	</html>

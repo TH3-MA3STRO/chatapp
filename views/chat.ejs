@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+    integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+  <link rel="stylesheet" href="/css/style.css">
+  <link rel="stylesheet" href="/css/home.css">
+
+  <title>ChatBox App</title>
+</head>
+
+<body>
+  <div class="cover" style=" <%= isRedirected=='true' ? 'display: flex;' : 'display: none;' %> ">
+    <div class="popup" style=" <%= isRedirected=='true' ? 'display: flex;' : 'display: none;' %> ">
+      <i id="close" class="fas fa-times"></i></p>
+      <form method="POST" action="/invite">
+        <div class="text">
+          <input type="hidden" name="roomid" value="<%= room.id %>">
+          <input type="hidden" name="roomname" value="<%= room.name %>">
+          <div class="form-control">
+            <label for="username" class="label">Username of person to invite:</label>
+            <input type="text" name="username" autocomplete="off" required id="username"
+              value="<%= typeof username != 'undefined' ? username : '' %>">
+            <button type="submit"><i class="fas fa-user-plus"></i></button>
+            <% if (msg && msg!=='') { %> <% if (msg=='success') { %>
+              <h4 class="success">Invited successfully...</h4>
+            <% } else { %>
+              <h4 class="fail"><%= msg %> </h4>
+            <% }} %>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+  <%- include('partials/nav') %>
+  <div class="chat-container">
+    <!-- <header class="chat-header">
+      <h1><i class="fas fa-smile"></i> ChatBox</h1>
+      <a href="" class="btn btn-leave">Leave Room</a>
+    </header> -->
+    <main class="chat-main">
+      <div class="chat-sidebar">
+        <h3><i class="fas fa-comments"></i> Room Name:</h3>
+        <h2 id="room-name"><%= room.name %></h2>
+        <div class="engulf">
+          <h3><i class="fas fa-users"></i> Members </h3>
+        <% if (isCreator) { %>
+          <h3 id="add" href="" target="_blank" rel="noopener noreferrer"><i class="fas fa-plus-square"></i></h3>
+        <% } %>
+      </div>
+        <ul id="users">
+          <% room.members.forEach(member => { %>
+          <li><%= member %></li>
+          <% }) %>
+        </ul>
+      </div>
+      <div class="chat-messages">
+        <div class="chat-messages-inner"></div>
+        <div class="typing">
+          <ul id="typers">
+          </ul>
+        </div>
+        <div class="chat-form-container">
+          <form id="chat-form">
+            <input id="msg" type="text" placeholder="Enter Message" required autocomplete="off" />
+            <button class="btn"><i class="fas fa-paper-plane"></i></button>
+          </form>
+        </div>
+      </div>
+    </main>
+
+  </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qs/6.9.4/qs.min.js"
+    integrity="sha512-BHtomM5XDcUy7tDNcrcX1Eh0RogdWiMdXl3wJcKB3PFekXb3l5aDzymaTher61u6vEZySnoC/SAj2Y/p918Y3w=="
+    crossorigin="anonymous"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script>
+    const form = document.getElementById("chat-form");
+    const chatDiv = document.querySelector(".chat-messages-inner");
+    const chatDiv2 = document.querySelector(".chat-messages");
+    const add= document.getElementById('add')
+    const roomName = document.getElementById("room-name");
+    const usersUL = document.getElementById("users");
+    const typer = document.getElementById('typers')
+    const socket = io();
+    const username = JSON.parse('<%- userjs %>').username
+    var room = JSON.parse('<%- roomjs %> ').name
+    //Join room
+    socket.emit("joinRoom", { username, room });
+
+    // can be tweaked to display online users
+    socket.on("roomUsers", ({ room, users }) => {
+      typer.innerHTML = ''
+      users.forEach(user => {
+        typer.innerHTML += `<li id='${user.username}' style="display:none;"></li>`
+      });
+    });
+
+    //Handling incoming messages
+    socket.on("message", (message) => {
+      if (message.username !== 'ChatBox Bot') {
+        //store.txt
+      }
+      if (message.username !== username) {
+        outputMessage(message, ['outer'], message.username, 'other')
+        chatDiv2.scrollTop = chatDiv2.scrollHeight;
+
+      } else {
+        outputMessage(message, ['outer', 'right'], 'You', 'self');
+        chatDiv2.scrollTop = chatDiv2.scrollHeight;
+      }
+      chatDiv2.scrollTop = chatDiv2.scrollHeight;
+    });
+
+    socket.on("prev_messages", messages => {
+      messages.forEach((message) => {
+        msg = {
+          text: message.message,
+          time: message.time,
+          name: message.name
+        }
+        if (message.name != username) {
+          outputMessage(msg, ['outer'], msg.name, 'other')
+          chatDiv2.scrollTop = chatDiv2.scrollHeight;
+        } else {
+          outputMessage(msg, ['outer', 'right'], 'You', 'self');
+          chatDiv2.scrollTop = chatDiv2.scrollHeight;
+        }
+        chatDiv2.scrollTop = chatDiv2.scrollHeight;
+      });
+    })
+
+    //Handling currently typing
+    socket.on("typing_display", ({ username, message }) => {
+      li = document.getElementById(`${username}`)
+      li.style.color = '#634f4f'
+      if (message !== '') {
+        li.style.display = 'list-item'
+        li.innerHTML = `<i>${username} is typing...</i>`
+      } else {
+        li.style.display = 'none'
+        li.innerHTML = ''
+      }
+    });
+
+
+    //Listener for form submissions
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      const msg = e.target.elements.msg.value;
+      socket.emit("chatMsg", msg);
+      e.target.elements.msg.value = "";
+      e.target.elements.msg.focus();
+    });
+    if(add){
+      add.addEventListener('click', (e)=>{
+        document.getElementsByClassName('cover')[0].style.display = 'flex'
+        document.getElementsByClassName('popup')[0].style.display = 'flex'
+      })
+    }
+    document.getElementsByClassName('cover')[0].addEventListener('click', (e)=>{
+      if(e.target.className==='cover'){
+        document.getElementsByClassName('cover')[0].style.display = 'none'
+        document.getElementsByClassName('popup')[0].style.display = 'none'
+      } 
+    })
+    document.getElementById('close').addEventListener('click', (e)=>{
+      document.getElementsByClassName('cover')[0].style.display = 'none'
+      document.getElementsByClassName('popup')[0].style.display = 'none'
+    })
+    //Listener for typing event
+    form.addEventListener("input", (e) => {
+      if (e.target.value !== "") {
+        socket.emit("typing", { username, room });
+      } else {
+        socket.emit("typing_remove", room);
+      }
+    });
+
+    // Function to output message to screen
+    function outputMessage(message, classes, name, classname) {
+      const div = document.createElement("div");
+      div.classList.add(...classes)
+      div.innerHTML = `<div class="message ${classname}"><p class="meta">${name} <span>${message.time}</span></p>
+          <p class="text">
+              ${message.text}
+          </p></div>`;
+      chatDiv.appendChild(div);
+    }
+
+//    function changeLeave() {
+  //    const leaveBtn = document.querySelector('.btn-leave')
+    //  if (window.innerWidth <= 340) {
+      //  leaveBtn.innerHTML = '<i class="fas fa-sign-out-alt"></i>'
+      //} else {
+        //leaveBtn.innerHTML = 'Leave Room'
+ //     }
+   // }
+    //changeLeave()
+    window.addEventListener('resize', changeLeave)
+
+  </script>
+</body>
+
+</html>

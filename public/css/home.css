@@ -1,0 +1,312 @@
+@import url("https://fonts.googleapis.com/css2?family=Jost&display=swap");
+body {
+  margin: 0;
+  padding: 0;
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  font-family: "Jost", sans-serif;
+  background-color: #e0fcf4;
+  background-size: cover;
+  /* overflow: hidden; */
+}
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+}
+
+a {
+  text-decoration: none;
+  color: rgba(0, 0, 0, 0.692);
+}
+.subbed{
+  color: rgba(11, 12, 12, 0.753);
+}
+.navbar {
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background-color: #35ebb8;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-transform: translateZ(1000px);
+          transform: translateZ(1000px);
+}
+
+.navbar .brand {
+  padding: 5px 15px;
+  font-size: small;
+  width: 50%;
+}
+
+.navbar .nav-menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: row;
+          flex-direction: row;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: end;
+      -ms-flex-pack: end;
+          justify-content: flex-end;
+  width: 50%;
+  padding-right: 30px;
+}
+
+.navbar .nav-menus a {
+  padding: 13px 15px;
+  -webkit-transition: 400ms ease;
+  transition: 400ms ease;
+}
+
+.navbar .nav-menus a:hover {
+  background-color: #14ca96;
+}
+
+.sidenav {
+  background-color: #f1fffb;
+  position: fixed;
+  width: 0px;
+  height: 100%;
+  overflow: hidden;
+  -webkit-transition: 0.5s width;
+  transition: 0.5s width;
+}
+
+.sidenav .aside {
+  margin-top: 2.8em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%;
+  z-index: 12;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+}
+
+.sidenav .aside .ac-info {
+  width: 100%;
+  font-size: larger;
+  padding: .8em;
+  padding-left: 0.625em;
+  padding-top: 0.625em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.sidenav .aside .ac-info .test {
+  height: 150px;
+  width: 150px;
+  border-radius: 50%;
+  border: 3px solid gold;
+  margin-right: 10px;
+  background-color: black;
+}
+
+.sidenav .aside .ac-info p {
+  font-size: large;
+}
+
+.menus {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  padding: 0.5em;
+  overflow: hidden;
+}
+
+.menus a {
+  padding: 10px 20px;
+  width: 70%;
+  border-collapse: separate;
+  border-bottom: 0;
+  position: relative;
+  overflow: hidden;
+  -webkit-transition: ease 300ms;
+  transition: ease 300ms;
+  background-color: #effdf9;
+}
+
+.menus a::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.menus a:hover {
+  background-color: #dfdfdf;
+  padding-left: 40px;
+  padding-right: 0px;
+}
+
+.menus a:hover::before {
+  /* transform: scale(1, 1); */
+  border: 3px solid #35ebb8;
+  bottom: 0;
+}
+
+.container {
+  margin: 1em 0;
+  -webkit-transition: margin-left 0.5s;
+  transition: margin-left 0.5s;
+}
+
+.content {
+  margin: 1em;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: end;
+      align-self: flex-end;
+}
+
+.action {
+  -ms-flex-item-align: center;
+      align-self: center;
+  width: 60%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: relative;
+}
+
+.action a {
+  padding: 5px 10px;
+  -webkit-transition: ease-out 400ms;
+  transition: ease-out 400ms;
+  position: relative;
+}
+
+.action a::after {
+  margin: 0;
+  padding: 0;
+  position: absolute;
+  left: 0;
+  content: "";
+  bottom: 0;
+  right: 0;
+  border: 1px solid #35ebb8;
+  -webkit-transform: scale(0, 1);
+          transform: scale(0, 1);
+  z-index: 999;
+  -webkit-transition: 400ms ease transform;
+  transition: 400ms ease transform;
+}
+
+.action a:hover::after {
+  -webkit-transform: scale(1, 1);
+          transform: scale(1, 1);
+}
+
+.action a:hover {
+  background-color: rgba(58, 58, 58, 0.2);
+}
+
+.inbox {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  width: 70%;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-item-align: center;
+      align-self: center;
+  margin: 2em 1em;
+  background-color: rgba(173, 173, 173, 0.116);
+}
+
+.inbox .mails {
+  padding: 1em 1em;
+  -webkit-transition: ease-in-out 400ms;
+  transition: ease-in-out 400ms;
+}
+
+.inbox .mails:hover {
+  background-color: rgba(35, 37, 37, 0.336);
+}
+
+.three-lines {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  height: 3em;
+  width: 4em;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  position: absolute;
+  left: 0;
+}
+
+.three-lines .lines {
+  width: 2em;
+  border: 2px solid black;
+  margin: 0.2em 0.6em;
+  -webkit-transition: 400ms;
+  transition: 400ms;
+}
+
+.change #l1 {
+  -webkit-transform: rotate(-45deg) translate(-8px, 7px);
+          transform: rotate(-45deg) translate(-8px, 7px);
+}
+
+.change #l2 {
+  opacity: 0;
+}
+
+.change #l3 {
+  -webkit-transform: rotate(45deg) translate(-8px, -7px);
+          transform: rotate(45deg) translate(-8px, -7px);
+}
+
+.text-box{
+  display: block;
+}
+.error-txt{
+  width: 50%;
+  text-align: center;
+  margin: 10rem auto;
+}
+@media (max-width: 1120px) {
+  .ac-info{
+    flex-direction: column;
+    margin: auto
+  }
+}/*# sourceMappingURL=first.css.map */
