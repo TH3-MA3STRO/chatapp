@@ -77,10 +77,8 @@ mongoose.connect(db,{useUnifiedTopology: true, useNewUrlParser: true}, (err,data
     //Listens for user messages
     socket.on("chatMsg", (message) => {
       const user = getCurrentUser(socket.id);
-      console.log(user);
       const newMsg = new Chat({room:user.room, name: user.username, message: message, time: moment().format('h:mm a')}).save().then(
         resp=>{
-          console.log('responded');
           io.to(user.room).emit("message", formatMessage(user.username, message));
         })
     });

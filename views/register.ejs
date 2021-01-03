@@ -47,8 +47,12 @@
 						<label for="passcreate" class="label"><span class="animated-label">Create Password</span></label>
 						<div class="error" >
 							<p class="error-txt" id="empty-p">Please fill out this field</p>
-							<p class="error-txt" id="pass-1">Password should be at least 6 characters long</p>
 						</div></div>
+						<div class="suggest form-element">
+							<p class="suggest-p1"><span class="icon-1"><i class="fas fa-circle"></i></span> Password should be atleast 6 characters long</p>
+							<p class="suggest-p2"><span class="icon-2"><i class="fas fa-circle"></i></span> Password should contain atleast 1 numeric character</p>
+							<p class="suggest-p3"><span class="icon-3"><i class="fas fa-circle"></i></span> Password should contain atleast 1 uppercase and 1 lowercase alphabet</p>
+						</div>
                     <div class="form-element">
 						<input type="password" name="passconfirm" autocomplete="off" required id="passconfirm" value="<%= typeof passconfirm != 'undefined' ? passconfirm : '' %>">
 						<label for="passconfirm" class="label"><span class="animated-label">Confirm Password</span></label>

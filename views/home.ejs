@@ -13,14 +13,13 @@
             </div>
             <div class="menus">
                 <a href="/create">Create Room</a>
-                <a href="#">Set Status</a>
-                <a href="#">Account</a>
+                <a href="/<%= user.username %>/usettings">Account</a>
                 <a href="/invitations">Invitations</a>
                 <a href="/logout">Log Out</a>
             </div>
         </div>
     </div>
- 
+
     <div class="container" id="shift" style="position: relative;">
         <div class="three-lines" onclick="change(this)">
             <div class="lines" id="l1"></div>
@@ -28,14 +27,13 @@
             <div class="lines" id="l3"></div>
         </div>
         <div class="content">
-            
             <div class="inbox">
             <% if (rooms.length>0) { %>
                 <% rooms.forEach(room => { %> 
                 <div class="mails" onclick="location.href='/room/<%= room.id %>'">
                     <h2><%= room.name %></h2>
                     <p>
-                    <%= room.members.join(', ') %>
+                    <%= Object.keys(room.membersData).join(', ') %>
                     </p>
                 </div>
                 <% }) %>

@@ -22,19 +22,19 @@
 				<div class="join-header">
 					<h1 class="heading"><i class="fas fa-smile"></i> ChatBox</h1>
 					<% if (success_msg !='') { %>
-						<div class="success">
-							<p>Account created succesfully! You can login now</p>
-						</div>
+					<div class="success">
+						<p>Account created succesfully! You can login now</p>
+					</div>
 					<% } %>
 					<% if (logout_msg !='') { %>
 						<div class="success">
-							<p><%= logout_msg %> </p>
+							<p><%= logout_msg %></p>
 						</div>
 					<% } %>
 					<% if (message !='') { %>
-						<div class="fail">
-							<p><%= message %> </p>
-						</div>
+					<div class="fail">
+						<p><%= message %></p>
+					</div>
 					<% } %>
 				</div>
 				

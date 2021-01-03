@@ -1,0 +1,51 @@
+<%- include('partials/head') %>
+<link rel="stylesheet" href="/css/settings.css">
+
+<%- include('partials/nav') %>
+<div class="container container-user">
+    <form class="form" action="/edituser" method="POST">
+        <div class="form-util">
+            <label for="name">Name: </label>
+            <input type="text" id="name" name="name" value="<%= user.name %>">
+        </div>
+        <div class="form-util">
+            <label for="username">Username: </label>
+            <input type="username" id="username" name="username" value="<%= user.username %>">
+        </div>
+        <div class="form-util">
+            <button id="submit" type="submit" disabled>Save</button>
+        </div>
+    </form>
+</div>
+<%- include('partials/bottomnav') %> 
+</body>
+<script>
+    const submit = document.getElementById('submit')
+    const oldP = undefined
+    const newP1 = undefined
+    const newP2 = undefined
+    const uname = document.getElementById('username')
+    const name = document.getElementById('name')
+    const actname = name.value
+    const actuname = username.value
+    const toListen = [name,uname]
+    uname.addEventListener('input',e=>{
+        if(actuname!==e.target.value){
+            submit.disabled = false
+        } else if(actname!==name.value){
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    })
+    name.addEventListener('input',e=>{
+        if(actname!==e.target.value){
+            submit.disabled = false
+        } else if(actuname!==uname.value){
+            submit.disabled = false
+        } else {
+            submit.disabled = true
+        }
+    })
+
+</script>

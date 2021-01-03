@@ -48,7 +48,7 @@ a {
 .heading{
   font-size: 7vw;
   /* font-size: 4vmax; */
-  font-size: 7vmin;
+  font-size: 6vmin;
 }
 
 .navbar .nav-menus {
@@ -73,6 +73,7 @@ a {
   padding: 13px 15px;
   -webkit-transition: 400ms ease;
   transition: 400ms ease;
+  font-size: 3.5vmin;
 }
 
 .navbar .nav-menus a:hover {
@@ -240,7 +241,7 @@ a {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 70%;
+  width: 75%;
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
@@ -256,12 +257,18 @@ a {
   -webkit-transition: ease-in-out 400ms;
   transition: ease-in-out 400ms;
 }
+.mails h2{
+  font-size: 2.6vmax;
+}
+.mails p{
+  font-size: 2.4vmax;
+}
 .bottombar {
   display: none;
   position: fixed;
   bottom: 0;
   width: 100%;
-  color: white;
+  color: white;  
   height: 2.5rem;
 }
 .bottombar .navbar {
@@ -277,7 +284,7 @@ a {
 .fas {
   transition: linear 0.2s;
 }
-.bottom .navbar .fas:hover {
+.bottombar .navbar .fas:hover {
   color: white;
 }
 .inbox .mails:hover {
@@ -341,8 +348,11 @@ a {
   }
 }
 @media (max-width: 190px) {
-  .heading{
+  .hide{
     display: none;
+  }
+  .heading{
+    font-size: 4vmax;
   }
 }
 @media (max-width: 620px) {
@@ -358,9 +368,9 @@ a {
   .bottombar {
     display: block;
   }
-  /* .navbar div.nav-menus {
+  .navbar div.nav-menus {
     display: none;
-  } */
+  }
   .navbar .brand{
     width: 100%;
   }

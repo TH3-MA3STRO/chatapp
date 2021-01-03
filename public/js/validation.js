@@ -54,3 +54,33 @@ fbc("form").addEventListener('submit', (e) => {
         e.stopPropagation()
     }
 })
+fbi('submit').disabled = true
+fbi('passcreate').addEventListener('input', e=>{
+    val = e.target.value
+    if(val.length>=6){
+        fbc('icon-1').innerHTML = '<i class="fas fa-check-circle"></i>'
+        fbc('suggest-p1').classList.add('validated')
+    } else{
+        fbc('icon-1').innerHTML = '<i class="fas fa-circle"></i>'
+        fbc('suggest-p1').classList.remove('validated')
+    }
+    if(/\d/.test(val)){
+        fbc('icon-2').innerHTML = '<i class="fas fa-check-circle"></i>'
+        fbc('suggest-p2').classList.add('validated')
+    } else{
+        fbc('icon-2').innerHTML = '<i class="fas fa-circle"></i>'
+        fbc('suggest-p2').classList.remove('validated')
+    }
+    if(/[A-Z]/.test(val) && /[a-z]/.test(val)){
+        fbc('icon-3').innerHTML = '<i class="fas fa-check-circle"></i>'
+        fbc('suggest-p3').classList.add('validated')
+    } else{
+        fbc('icon-3').innerHTML = '<i class="fas fa-circle"></i>'
+        fbc('suggest-p3').classList.remove('validated')
+    }
+    if(fbc('suggest-p3').classList.contains('validated')&&fbc('suggest-p2').classList.contains('validated')&&fbc('suggest-p1').classList.contains('validated')){
+        fbi('submit').disabled = false
+    } else {
+        fbi('submit').disabled = true
+    }
+})

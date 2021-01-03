@@ -29,10 +29,8 @@ router.post('/register', (req, res) => {
                             username: username,
                             password: password,
                         })
-                        console.log(newUser);
                         newUser.save().then(
                             user=>{
-                                console.log('saved');
                                 req.flash('success', 'Account')
                                 res.redirect('/login')}
                         ).catch(err=>console.log(err))

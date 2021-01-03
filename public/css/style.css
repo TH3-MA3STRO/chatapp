@@ -21,7 +21,7 @@ body {
     margin: 0px;
     height: 100vh;
     position: relative;
-    overflow: hidden;
+    /* overflow: hidden; */
 }
 
 ul {
@@ -47,12 +47,14 @@ a {
   background: var(--light-color)
 }
 /* Chat Page */
-
+.navbar{
+    height: 10% !important;
+}
 .chat-container {
    /* max-width: 1100px;*/
     background: #fff;
-    overflow: hidden;
-    height: 100%;
+    /* overflow: hidden; */
+    height: 90%;
     display: flex;
     flex-direction: column;
 /*     overflow-y: auto */
@@ -70,7 +72,7 @@ a {
 }
 
 .chat-main {
-    height: 90%;
+    height: 100%;
     display: grid;
     grid-template-columns: 1fr 3fr;
 }
@@ -157,7 +159,10 @@ a {
 }
 
 .chat-form-container {
-    margin-top: auto;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    /* display: none; */
 }
 
 .chat-form-container form {
@@ -169,59 +174,13 @@ a {
     padding: 5px;
     height: 40px;
     flex: 1;
+    width: 80%;
+}
+.chat-form-container button{
+    width: 20%;
+    max-width: 50px;
 }
 
-/* Join Page */
-.join-container {
-    max-width: 500px;
-    margin: 80px auto;
-    color: #fff;
-}
-
-.join-header {
-    text-align: center;
-    padding: 20px;
-    background: var(--dark-color-a);
-    border-top-left-radius: 5px;
-    border-top-right-radius: 5px;
-}
-
-.join-main {
-    padding: 30px 40px;
-    background: var(--dark-color-b);
-}
-
-.join-main p {
-    margin-bottom: 20px;
-}
-
-.join-main .form-control {
-    margin-bottom: 20px;
-}
-
-.join-main label {
-    display: block;
-    margin-bottom: 5px;
-}
-
-.join-main input[type='text'] {
-    font-size: 16px;
-    padding: 5px;
-    height: 40px;
-    width: 100%;
-}
-
-.join-main select {
-    font-size: 16px;
-    padding: 5px;
-    height: 40px;
-    width: 100%;
-}
-
-.join-main .btn {
-    margin-top: 20px;
-    width: 100%;
-}
 .cover{
     z-index: 99;
     position: absolute;
@@ -268,7 +227,7 @@ h4{
     border-radius: 10px;
     height: 10vh;
     position: relative;
-    width:35%;
+    width:50%;
     /* margin: 10% auto 0 auto; */
     background-color: rgb(237, 255, 253);
     transition: linear .6s;
@@ -276,7 +235,10 @@ h4{
     align-items: center;
     justify-content: center;
     display: none;
-    
+    max-width: 350px;
+}
+.popup input{
+    width: 80%;
 }
 .popup .text{
     margin: auto;
@@ -289,6 +251,9 @@ h4{
     right: 6px;
     color: black;
 }
+.unhide{
+    display: none;
+}
 @media (max-width: 700px) {
     .chat-main {
         display: block;
@@ -299,7 +264,29 @@ h4{
     .chat-sidebar {
         display: none;
     }
+    .unhide{
+        display: block;
+    }
 }
-@media (max-width: 410px) {
 
+@media (max-width: 620px) {
+    .navbar div.nav-menus {
+      display: flex;
+    }
+    .navbar .brand{
+      width: 50%;
+    }
+  }
+@media (max-width: 390px) {
+    .navbar .nav-menus a {
+        font-size: 3.5vmax;
+      }
+}
+@media (max-width: 270px) {
+    .hide{
+        display: none;
+    }
+    .nav-menus{
+        padding: 0 !important;
+    }
 }
