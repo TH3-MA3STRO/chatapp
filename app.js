@@ -23,7 +23,7 @@ const authroutes = require('./routes/auth')
 const serviceroutes = require('./routes/service')
 const confUtils = require('./config/authenticate')
 //connectiong mongooose
-const db = require('./config/keys').MONGO_URI
+const db = process.env.MONGO_URI
 require('./config/passport')(passport)
 
 
