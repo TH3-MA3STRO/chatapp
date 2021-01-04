@@ -17,7 +17,8 @@ const ChatSchema = new mongoose.Schema({
     time: {
         type: String,
         required: true,
-        default: moment().format('h:mm a')},
-    });
+        default: moment().format('h:mm a')
+    },
+});
 const Chat = mongoose.model('Chat', ChatSchema)
 module.exports = Chat

@@ -1,73 +1,67 @@
-.mails{
-    position: relative;
-    box-sizing: border-box;
-    overflow: hidden;
-    /* z-index: -1; */
+.mails {
+  position: relative;
+  box-sizing: border-box;
+  overflow: hidden;
+  /* z-index: -1; */
 }
-.buttons{
-    text-align: center;
-    color: black;
-    position: relative;
-    overflow: hidden;
-    border-radius: 10px;
-    padding: .7rem 1.5rem;
-    margin: 0 .2rem;
-}
-
-.buttons::after{
-    content: '';
-    position: absolute;
-    overflow: hidden;
-    height: 0%;
-    width: 100%;
-    top: 0;
-    left: 0;
-    z-index: -99;
-    right: 0;
-    transition: .7s;
-    border-radius: 6px;
-}
-.btn-accept{
-    border: 2px solid rgb(21, 218, 21);
-    color: rgb(21, 218, 21);
-
-}
-.btn-decline{
-    color:  rgb(255, 51, 51);
-    border: 2px solid rgb(255, 51, 51);
-}
-.buttons:hover{
-    text-decoration: underline;
-    color: rgb(255, 255, 255);
-    overflow: hidden;
-}
-.btn-decline:hover::after{
-    height: 100%;
-    background-color: rgb(255, 51, 51);
-}
-.btn-accept:hover::after{
-    height: 100%;
-    background-color: rgb(21, 218, 21);
-
+.buttons {
+  text-align: center;
+  color: black;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+  padding: 0.7rem 1.5rem;
+  margin: 0 0.2rem;
 }
 
-.s{
-    display: block;
-    position: relative;
-    margin: 2rem auto;
-    transition: linear 0.1s;
-    /* height: 0rem; */
-    
+.buttons::after {
+  content: "";
+  position: absolute;
+  overflow: hidden;
+  height: 0%;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: -99;
+  right: 0;
+  transition: 0.7s;
+  border-radius: 6px;
 }
-.buttons{
-    /* visibility: hidden; */
-    /* display: none; */
-    height: 0;
-    overflow: hidden;
-    /* transition: linear .5s; */
+.btn-accept {
+  border: 2px solid rgb(21, 218, 21);
+  color: rgb(21, 218, 21);
 }
-@media( max-width: 450px){
-    .buttons{
-        padding: .2rem .5rem;
-    }
+.btn-decline {
+  color: rgb(255, 51, 51);
+  border: 2px solid rgb(255, 51, 51);
+}
+.buttons:hover {
+  text-decoration: underline;
+  color: rgb(255, 255, 255);
+  overflow: hidden;
+}
+.btn-decline:hover::after {
+  height: 100%;
+  background-color: rgb(255, 51, 51);
+}
+.btn-accept:hover::after {
+  height: 100%;
+  background-color: rgb(21, 218, 21);
+}
+
+.s {
+  display: block;
+  position: relative;
+  margin: 2rem auto;
+  transition: linear 0.1s;
+  /* height: 0rem; */
+}
+.buttons {
+  height: 0;
+  overflow: hidden;
+}
+@media (max-width: 450px) {
+  .buttons {
+    padding: 0.2rem 0.5rem;
+  }
 }

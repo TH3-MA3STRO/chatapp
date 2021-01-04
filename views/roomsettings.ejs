@@ -13,7 +13,7 @@
             <input type="hidden" name="roomid" value="<%= room.id %>">
             <div class="btngr">
                 <button id="submit" type="submit" disabled>Save</button>
-                <button class="close">Cancel</button>                    
+                <button class="close">Cancel</button>
             </div>
         </form>
     </div>
@@ -22,66 +22,67 @@
             Members:
         </h1>
         <% room.members.forEach(member => { %>
-            <div class="member">
-                <div class="text">
-                    <h3 class="name"><%= member.name %>
-                        <% if(member.name===room.creator) { %>
-                            <a href="" class="kick admin"><i class="fas fa-user-shield"></i></a>
-                        <% } %> 
-                    </h3>
-                    <h3 class="username">@<%= member.username %></h3>    
-                </div>
-                <div class="remove">
-                <% if (member.username!==room.creator) { %>
-                    <a href="/kick/<%= room.id %>/<%= member.username %>" class="tokick kick"><i class="fas fa-user-minus"></i></a>
-                <% } %>
-                </div>
+        <div class="member">
+            <div class="text">
+                <h3 class="name"><%= member.name %>
+                    <% if(member.name===room.creator) { %>
+                    <a href="" class="kick admin"><i class="fas fa-user-shield"></i></a>
+                    <% } %>
+                </h3>
+                <h3 class="username">@<%= member.username %></h3>
             </div>
+            <div class="remove">
+                <% if (member.username!==room.creator) { %>
+                <a href="/kick/<%= room.id %>/<%= member.username %>" class="tokick kick"><i
+                        class="fas fa-user-minus"></i></a>
+                <% } %>
+            </div>
+        </div>
         <% }) %>
         <div class="goback">
             <a class="back" href="/room/<%= room.id %>"><i class="fas fa-arrow-left"></i></a>
         </div>
-</div>
-</body>
-<script>
-    const kick = document.getElementsByClassName('kick')
-    const gedit = document.getElementById('edit')
-    const closebtn = document.getElementsByClassName('close')[0]
-    const gname = document.getElementsByClassName('g-name')[0]
-    const inputn = document.getElementById('gname')
-    const submitbtn = document.getElementById('submit')
-    var formutil = document.getElementsByClassName('form-util')[0]
-    const groupname = inputn.value
-    gedit.addEventListener('click', e=>{
-        e.preventDefault();
-        gname.style.display = 'none'
-        formutil.style.display = 'flex'
-        inputn.focus()
-    })
-    closebtn.addEventListener('click',e=>{
-        e.preventDefault();
-        gname.style.display = 'block'
-        formutil.style.display = 'none'
-    })
-    inputn.addEventListener('input', e=>{
-        if(inputn.value!=groupname){
-            submitbtn.disabled=false
-        } else {
-            submitbtn.disabled=true
+    </div>
+    </body>
+    <script>
+        const kick = document.getElementsByClassName('kick')
+        const gedit = document.getElementById('edit')
+        const closebtn = document.getElementsByClassName('close')[0]
+        const gname = document.getElementsByClassName('g-name')[0]
+        const inputn = document.getElementById('gname')
+        const submitbtn = document.getElementById('submit')
+        var formutil = document.getElementsByClassName('form-util')[0]
+        const groupname = inputn.value
+        gedit.addEventListener('click', e => {
+            e.preventDefault();
+            gname.style.display = 'none'
+            formutil.style.display = 'flex'
+            inputn.focus()
+        })
+        closebtn.addEventListener('click', e => {
+            e.preventDefault();
+            gname.style.display = 'block'
+            formutil.style.display = 'none'
+        })
+        inputn.addEventListener('input', e => {
+            if (inputn.value != groupname) {
+                submitbtn.disabled = false
+            } else {
+                submitbtn.disabled = true
+            }
+        })
+        changebtns = () => {
+            if (window.innerWidth < 1000) {
+                closebtn.innerHTML = '<i class="fas fa-window-close"></i>'
+                submitbtn.innerHTML = '<i class="fas fa-check-square"></i>'
+                submitbtn.style.backgroundColor = 'transparent'
+                submitbtn.style.color = 'green'
+                closebtn.style.backgroundColor = 'transparent'
+                closebtn.style.border = 'none'
+            } else {
+                closebtn.innerHTML = 'Close'
+            }
         }
-    })
-    changebtns = ()=>{
-        if(window.innerWidth<1000){
-            closebtn.innerHTML = '<i class="fas fa-window-close"></i>'
-            submitbtn.innerHTML = '<i class="fas fa-check-square"></i>'
-            submitbtn.style.backgroundColor = 'transparent'
-            submitbtn.style.color = 'green'
-            closebtn.style.backgroundColor = 'transparent'
-            closebtn.style.border = 'none'
-        }else{
-            closebtn.innerHTML = 'Close'
-        }
-    }
-    changebtns()
-    window.addEventListener('resize', changebtns)
-</script>
+        changebtns()
+        window.addEventListener('resize', changebtns)
+    </script>

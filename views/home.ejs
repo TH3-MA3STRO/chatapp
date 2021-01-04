@@ -1,64 +1,66 @@
-<%- include('partials/head') %> 
-<%- include('partials/nav') %>  
-    <div class="sidenav" id="mynav">
-        <div class="aside">
-            <div class="ac-info">
-                <!-- <div >
+<%- include('partials/head') %>
+<%- include('partials/nav') %>
+<div class="sidenav" id="mynav">
+    <div class="aside">
+        <div class="ac-info">
+            <!-- <div >
                     <img class="test" src="self.jpg"srcset="">
                 </div> -->
-                <div class="text-box">
-                    <div class="text"><p><%= user.name %> </p></div>
-                    <p class="subbed">@<%= user.username %> </p>
+            <div class="text-box">
+                <div class="text">
+                    <p><%= user.name %> </p>
                 </div>
+                <p class="subbed">@<%= user.username %> </p>
             </div>
-            <div class="menus">
-                <a href="/create">Create Room</a>
-                <a href="/<%= user.username %>/usettings">Account</a>
-                <a href="/invitations">Invitations</a>
-                <a href="/logout">Log Out</a>
-            </div>
+        </div>
+        <div class="menus">
+            <a href="/create">Create Room</a>
+            <a href="/<%= user.username %>/usettings">Account</a>
+            <a href="/invitations">Invitations</a>
+            <a href="/logout">Log Out</a>
         </div>
     </div>
+</div>
 
-    <div class="container" id="shift" style="position: relative;">
-        <div class="three-lines" onclick="change(this)">
-            <div class="lines" id="l1"></div>
-            <div class="lines" id="l2"></div>
-            <div class="lines" id="l3"></div>
-        </div>
-        <div class="content">
-            <div class="inbox">
+<div class="container" id="shift" style="position: relative;">
+    <div class="three-lines" onclick="change(this)">
+        <div class="lines" id="l1"></div>
+        <div class="lines" id="l2"></div>
+        <div class="lines" id="l3"></div>
+    </div>
+    <div class="content">
+        <div class="inbox">
             <% if (rooms.length>0) { %>
-                <% rooms.forEach(room => { %> 
-                <div class="mails" onclick="location.href='/room/<%= room.id %>'">
-                    <h2><%= room.name %></h2>
-                    <p>
+            <% rooms.forEach(room => { %>
+            <div class="mails" onclick="location.href='/room/<%= room.id %>'">
+                <h2><%= room.name %></h2>
+                <p>
                     <%= Object.keys(room.membersData).join(', ') %>
-                    </p>
-                </div>
-                <% }) %>
-            <% } %>
+                </p>
             </div>
+            <% }) %>
+            <% } %>
         </div>
     </div>
-    <%- include('partials/bottomnav') %> 
-    <script>
-        let a = 0
+</div>
+<%- include('partials/bottomnav') %>
+<script>
+    let a = 0
 
-        function change(x) {
-            if (a % 2 === 0) {
-                x.classList.toggle('change')
-                document.getElementById('mynav').style.width = "25%";
-                document.getElementById('shift').style.marginLeft = "25%";
-                a += 1;
-            } else {
-                x.classList.toggle('change')
-                document.getElementById('mynav').style.width = "0";
-                document.getElementById('shift').style.marginLeft = "0";
-                a += 1
-            }
+    function change(x) {
+        if (a % 2 === 0) {
+            x.classList.toggle('change')
+            document.getElementById('mynav').style.width = "25%";
+            document.getElementById('shift').style.marginLeft = "25%";
+            a += 1;
+        } else {
+            x.classList.toggle('change')
+            document.getElementById('mynav').style.width = "0";
+            document.getElementById('shift').style.marginLeft = "0";
+            a += 1
         }
-    </script>
+    }
+</script>
 </body>
 
 </html>

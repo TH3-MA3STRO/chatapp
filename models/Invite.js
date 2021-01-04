@@ -11,8 +11,8 @@ const InviteSchema = new mongoose.Schema({
         required: true,
     },
     senderUsername: {
-      type: String,
-      required: true,
+        type: String,
+        required: true,
     },
     roomName: {
         type: String,
@@ -22,6 +22,6 @@ const InviteSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    });
+});
 const Invite = mongoose.model('Invite', InviteSchema)
 module.exports = Invite

@@ -1,72 +1,80 @@
-
 <!DOCTYPE html>
 <html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<link
-			rel="stylesheet"
-			href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
-			integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk="
-			crossorigin="anonymous"
-		/>
-		<link rel="stylesheet" href="css/auth.css" />
-		<title>ChatBox App</title>
-	</head>
-	<body style="overflow:hidden;">
-		<div class="join-container">
-			
-			<main class="join-main">
-				<header class="join-header">
-					<h1><i class="fas fa-smile"></i> ChatBox</h1>
-				</header>
-				<form action="/register" method="POST" class="form" novalidate>
-                    <div class="form-element">
-						<input type="text" name="name" autocomplete="off" required id="name" value="<%= typeof name != 'undefined' ? name : '' %>">
-						<label for="name" class="label"><span class="animated-label">Full Name</span></label>
-						<div class="error">
-							<p class="error-txt" id="name-e">Please fill out this field</p>
-						</div></div>
-					<div class="form-element">
-						<input type="text" name="username" autocomplete="off" required id="username" value="<%= typeof username != 'undefined' ? username : '' %>">
-						<label for="username" class="label"><span class="animated-label">Username</span></label>
-						<div class="error">
-							<p class="error-txt" id="empty-u">Please fill out this field</p>
-							<% if (suggestions.length>0) { %>
-								<p style="display: block;" class="error-txt" id="unique">Username is already taken <br>try: 							 								 
-								<% suggestions.forEach(suggestion => { %>
-									<span id="options"><%= suggestion %> </span>
-								<% }) %>
-								</p>
-							<% } %>
-						</div>
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
+		integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
+	<link rel="stylesheet" href="css/auth.css" />
+	<title>ChatBox App</title>
+</head>
+
+<body>
+	<div class="join-container">
+
+		<main class="join-main">
+			<header class="join-header">
+				<h1><i class="fas fa-smile"></i> ChatBox</h1>
+			</header>
+			<form action="/register" method="POST" class="form" novalidate>
+				<div class="form-element">
+					<input type="text" name="name" autocomplete="off" required id="name"
+						value="<%= typeof name != 'undefined' ? name : '' %>">
+					<label for="name" class="label"><span class="animated-label">Full Name</span></label>
+					<div class="error">
+						<p class="error-txt" id="name-e">Please fill out this field</p>
 					</div>
-                    <div class="form-element">
-						<input type="password" name="passcreate" autocomplete="off" required id="passcreate" value="<%= typeof passcreate != 'undefined' ? passcreate : '' %>">
-						<label for="passcreate" class="label"><span class="animated-label">Create Password</span></label>
-						<div class="error" >
-							<p class="error-txt" id="empty-p">Please fill out this field</p>
-						</div></div>
-						<div class="suggest form-element">
-							<p class="suggest-p1"><span class="icon-1"><i class="fas fa-circle"></i></span> Password should be atleast 6 characters long</p>
-							<p class="suggest-p2"><span class="icon-2"><i class="fas fa-circle"></i></span> Password should contain atleast 1 numeric character</p>
-							<p class="suggest-p3"><span class="icon-3"><i class="fas fa-circle"></i></span> Password should contain atleast 1 uppercase and 1 lowercase alphabet</p>
-						</div>
-                    <div class="form-element">
-						<input type="password" name="passconfirm" autocomplete="off" required id="passconfirm" value="<%= typeof passconfirm != 'undefined' ? passconfirm : '' %>">
-						<label for="passconfirm" class="label"><span class="animated-label">Confirm Password</span></label>
-						<div class="error" >
-							<p class="error-txt" id="empty-p2">Please fill out this field</p>
-							<p class="error-txt" id="pass-2">Passwords do not match</p>
-						</div></div>
-                    <div class="form-util">
-						<input id="submit" type="submit" value="Create Account">
-						<h3>Already have an account? <a href="/login">Login here...</a></h3>
-                    </div>
-                </form>
-			</main>
-		</div>
-	</body>
+				</div>
+				<div class="form-element">
+					<input type="text" name="username" autocomplete="off" required id="username"
+						value="<%= typeof username != 'undefined' ? username : '' %>">
+					<label for="username" class="label"><span class="animated-label">Username</span></label>
+					<div class="error">
+						<p class="error-txt" id="empty-u">Please fill out this field</p>
+						<% if (suggestions.length>0) { %>
+						<p style="display: block;" class="error-txt" id="unique">Username is already taken <br>try:
+							<% suggestions.forEach(suggestion => { %>
+							<span id="options"><%= suggestion %> </span>
+							<% }) %>
+						</p>
+						<% } %>
+					</div>
+				</div>
+				<div class="form-element">
+					<input type="password" name="passcreate" autocomplete="off" required id="passcreate"
+						value="<%= typeof passcreate != 'undefined' ? passcreate : '' %>">
+					<label for="passcreate" class="label"><span class="animated-label">Create Password</span></label>
+					<div class="error">
+						<p class="error-txt" id="empty-p">Please fill out this field</p>
+					</div>
+				</div>
+				<div class="suggest form-element">
+					<p class="suggest-p1"><span class="icon-1"><i class="fas fa-circle"></i></span> Password should be
+						atleast 6 characters long</p>
+					<p class="suggest-p2"><span class="icon-2"><i class="fas fa-circle"></i></span> Password should
+						contain atleast 1 numeric character</p>
+					<p class="suggest-p3"><span class="icon-3"><i class="fas fa-circle"></i></span> Password should
+						contain atleast 1 uppercase and 1 lowercase alphabet</p>
+				</div>
+				<div class="form-element">
+					<input type="password" name="passconfirm" autocomplete="off" required id="passconfirm"
+						value="<%= typeof passconfirm != 'undefined' ? passconfirm : '' %>">
+					<label for="passconfirm" class="label"><span class="animated-label">Confirm Password</span></label>
+					<div class="error">
+						<p class="error-txt" id="empty-p2">Please fill out this field</p>
+						<p class="error-txt" id="pass-2">Passwords do not match</p>
+					</div>
+				</div>
+				<div class="form-util">
+					<input id="submit" type="submit" class="submit" value="Create Account">
+					<h3>Already have an account? <a href="/login">Login here...</a></h3>
+				</div>
+			</form>
+		</main>
+	</div>
+</body>
 <script src="js/validation.js"></script>
-	</html>
+
+</html>

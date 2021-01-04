@@ -18,14 +18,15 @@ const RoomSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    membersData:{
+    membersData: {
         type: Object,
         required: true,
     },
     time: {
         type: String,
         required: true,
-        default: moment().format('MMMM Do YYYY, h:mm:ss')},
-    });
+        default: moment().format('MMMM Do YYYY, h:mm:ss')
+    },
+});
 const Room = mongoose.model('Room', RoomSchema)
 module.exports = Room

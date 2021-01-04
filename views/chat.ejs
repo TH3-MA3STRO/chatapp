@@ -6,7 +6,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.12.1/css/all.min.css"
     integrity="sha256-mmgLkCYLUQbXn0B1SRqzHar6dCnv9oZFPEC1g1cwlkk=" crossorigin="anonymous" />
-    <link rel="stylesheet" href="/css/home.css">
+  <link rel="stylesheet" href="/css/home.css">
   <link rel="stylesheet" href="/css/style.css">
 
   <title>ChatBox App</title>
@@ -26,9 +26,9 @@
               value="<%= typeof username != 'undefined' ? username : '' %>">
             <button type="submit"><i class="fas fa-user-plus"></i></button>
             <% if (msg && msg!=='') { %> <% if (msg=='success') { %>
-              <h4 class="success">Invited successfully...</h4>
+            <h4 class="success">Invited successfully...</h4>
             <% } else { %>
-              <h4 class="fail"><%= msg %> </h4>
+            <h4 class="fail"><%= msg %> </h4>
             <% }} %>
           </div>
         </div>
@@ -37,16 +37,16 @@
   </div>
   <div class="navbar">
     <div onclick="location.href='/home'" class="brand">
-        <h1 class="heading"><i class="fas fa-smile"></i> <span class="hide">ChatBox</span></h1>
+      <h1 class="heading"><i class="fas fa-smile"></i> <span class="hide">ChatBox</span></h1>
     </div>
     <div class="nav-menus">
-        <a class="home" href="/home"><i class="fas fa-home"></i></a>
-        <% if (isCreator) { %>
-          <a href="/<%= room.id %>/rsettings"><i class="fas fa-tools"></i></a>
-          <a class="unhide add" href="#" rel="noopener noreferrer"><i class="fas fa-user-plus"></i></a>
-        <% } %>
+      <a class="home" href="/home"><i class="fas fa-home"></i></a>
+      <% if (isCreator) { %>
+      <a href="/<%= room.id %>/rsettings"><i class="fas fa-tools"></i></a>
+      <a class="unhide add" href="#" rel="noopener noreferrer"><i class="fas fa-user-plus"></i></a>
+      <% } %>
     </div>
-</div>
+  </div>
   <div class="chat-container">
     <main class="chat-main">
       <div class="chat-sidebar">
@@ -54,16 +54,16 @@
         <h2 id="room-name"><%= room.name %></h2>
         <div class="engulf">
           <h3><i class="fas fa-users"></i> Members </h3>
-        <% if (isCreator) { %>
+          <% if (isCreator) { %>
           <h3 class="add"><i class="fas fa-plus-square"></i></h3>
-        <% } %>
-      </div>
+          <% } %>
+        </div>
         <ul id="users">
           <% room.members.forEach(member => { %>
           <li><%= member.name %>
-          <% if (member.username===room.creator) { %>
+            <% if (member.username===room.creator) { %>
             <i class="fas fa-user-shield"></i>
-          <% } %>
+            <% } %>
           </li>
           <% }) %>
         </ul>
@@ -167,23 +167,23 @@
       e.target.elements.msg.focus();
     });
 
-    if(add.length>0){
+    if (add.length > 0) {
       for (let i = 0; i < add.length; i++) {
         const ad = add[i];
-        ad.addEventListener('click', (e)=>{
+        ad.addEventListener('click', (e) => {
           document.getElementsByClassName('cover')[0].style.display = 'flex'
           document.getElementsByClassName('popup')[0].style.display = 'flex'
         })
-      }   
+      }
     }
-    
-    document.getElementsByClassName('cover')[0].addEventListener('click', (e)=>{
-      if(e.target.className==='cover'){
+
+    document.getElementsByClassName('cover')[0].addEventListener('click', (e) => {
+      if (e.target.className === 'cover') {
         document.getElementsByClassName('cover')[0].style.display = 'none'
         document.getElementsByClassName('popup')[0].style.display = 'none'
-      } 
+      }
     })
-    document.getElementById('close').addEventListener('click', (e)=>{
+    document.getElementById('close').addEventListener('click', (e) => {
       document.getElementsByClassName('cover')[0].style.display = 'none'
       document.getElementsByClassName('popup')[0].style.display = 'none'
     })

@@ -10,36 +10,34 @@
 body {
   font-size: 70%;
   font-family: "Jost", sans-serif;
-
 }
-.error{
-    position: absolute;
-    /* line-height: .83rem; */
-    font-size: .8rem;
+.error {
+  position: absolute;
+  /* line-height: .83rem; */
+  font-size: 0.8rem;
 }
-.error-txt{
-    display: none;
-    color: rgb(255, 10, 10);
-}
-
-input{
-    box-shadow: none;
+.error-txt {
+  display: none;
+  color: rgb(255, 10, 10);
 }
 
-.join-main{
-    width: 85%;
-    margin: 1rem auto;
-
+input {
+  box-shadow: none;
 }
-.join-header{
+
+.join-main {
+  width: 85%;
+  margin: 1rem auto;
+}
+.join-header {
   margin: auto;
   width: 50%;
   text-align: center;
 }
-.heading{
-  margin-bottom: .6rem;
+.heading {
+  margin-bottom: 0.6rem;
 }
-.success{
+.success {
   height: 1.8rem;
   font-weight: 500;
   font-size: 1rem;
@@ -50,10 +48,10 @@ input{
   margin: auto;
   border: 1px green solid;
   background-color: rgba(13, 218, 13, 0.185);
-  padding: .3rem .5rem;
-  margin-bottom: .2rem;
+  padding: 0.3rem 0.5rem;
+  margin-bottom: 0.2rem;
 }
-.fail{
+.fail {
   height: 1.8rem;
   font-weight: 500;
   font-size: 1rem;
@@ -64,7 +62,7 @@ input{
   margin: auto;
   border: 1px red solid;
   background-color: rgba(255, 0, 0, 0.144);
-  padding: .3rem .5rem;
+  padding: 0.3rem 0.5rem;
 }
 
 .form {
@@ -75,7 +73,7 @@ input{
 .form-element {
   position: relative;
   margin: auto;
-  margin-bottom: 1.8rem; 
+  margin-bottom: 1.8rem;
   /* originaL 1REM */
   width: 70%;
   max-width: 405px;
@@ -92,13 +90,13 @@ input{
   outline: none;
   color: #000000;
   -webkit-transform: translateY(-4px);
-          transform: translateY(-4px);
+  transform: translateY(-4px);
 }
 
 .form-element input:focus + .label .animated-label,
 .form-element input:valid + .label .animated-label {
   -webkit-transform: translateY(-85%);
-          transform: translateY(-85%);
+  transform: translateY(-85%);
   font-size: 1rem;
   color: #000;
   font-weight: bolder;
@@ -180,14 +178,14 @@ input{
     font-size: 1rem;
   }
 }
-.suggest{
+.suggest {
   margin-bottom: 0 !important;
 }
-.validated{
+.validated {
   color: green;
 }
-input:disabled{
-  opacity: .65;
+input:disabled {
+  opacity: 0.65;
   pointer-events: none;
 }
 /*# sourceMappingURL=main.css.map */

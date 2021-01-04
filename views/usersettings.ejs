@@ -10,14 +10,18 @@
         </div>
         <div class="form-util">
             <label for="username">Username: </label>
-            <input type="username" id="username" name="username" value="<%= user.username %>">
+            <input type="username" id="username" name="username" value="<%= trUname.length>0 ? trUname: user.username %>">
+            <% if (suggestions.length>0) { %>
+            <p style="display: block;" class="error-txt" id="unique">Username is already taken, try something else
+            </p>
+            <% } %>
         </div>
         <div class="form-util">
             <button id="submit" type="submit" disabled>Save</button>
         </div>
     </form>
 </div>
-<%- include('partials/bottomnav') %> 
+<%- include('partials/bottomnav') %>
 </body>
 <script>
     const submit = document.getElementById('submit')
@@ -28,20 +32,20 @@
     const name = document.getElementById('name')
     const actname = name.value
     const actuname = username.value
-    const toListen = [name,uname]
-    uname.addEventListener('input',e=>{
-        if(actuname!==e.target.value){
+    const toListen = [name, uname]
+    uname.addEventListener('input', e => {
+        if (actuname !== e.target.value) {
             submit.disabled = false
-        } else if(actname!==name.value){
+        } else if (actname !== name.value) {
             submit.disabled = false
         } else {
             submit.disabled = true
         }
     })
-    name.addEventListener('input',e=>{
-        if(actname!==e.target.value){
+    name.addEventListener('input', e => {
+        if (actname !== e.target.value) {
             submit.disabled = false
-        } else if(actuname!==uname.value){
+        } else if (actuname !== uname.value) {
             submit.disabled = false
         } else {
             submit.disabled = true
