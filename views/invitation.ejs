@@ -6,8 +6,8 @@
         <div class="inbox">
             <% if (invite.length>0) { %> <% for( let i = 0; i < invite.length; i++ ) { %>
             <div class="mails" id="mail-<%= i %>">
-                <h2>From: <%= invite[i].roomName %> </h2>
-                <p>
+                <h2 class="rname">From: <%= invite[i].roomName %> </h2>
+                <p class="rmem">
                     <%= invite[i].senderName %>(@<%= invite[i].senderUsername %>) has inivited you to join
                     <%= invite[i].roomName %>
                 </p>
@@ -32,11 +32,6 @@
 </div>
 <%- include('partials/bottomnav') %>
 <script>
-    //    document.getElementById('mail2').addEventListener('click',(e)=>{
-    //       document.getElementsByClassName('s')[0].style.margin = '2rem auto'
-    //     document.getElementsByClassName('buttons')[0].style.display = 'inline'
-    //   document.getElementsByClassName('buttons')[1].style.display = 'inline'
-    //})
     function changebtns() {
         const btns = document.getElementsByClassName('buttons')
         for (let index = 0; index < btns.length; index++) {
@@ -57,4 +52,5 @@
         }
     }
     changebtns()
+
 </script>

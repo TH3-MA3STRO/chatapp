@@ -1,5 +1,4 @@
 const { v4: uuidv4 } = require('uuid');
-const bcrypt = require('bcrypt');
 const router = require('express').Router()
 
 const User = require('../models/User')

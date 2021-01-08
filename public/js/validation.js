@@ -84,3 +84,9 @@ fbi('passcreate').addEventListener('input', e => {
         fbc('submit').disabled = true
     }
 })
+fbi('username').addEventListener('keypress', (e)=> {  
+    var key = e.code;
+    if (key === 'Space' || e.key===' ') {
+        e.preventDefault();
+    }
+})

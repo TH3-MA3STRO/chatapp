@@ -23,5 +23,12 @@
 </div>
 <%- include('partials/bottomnav') %>
 </body>
-
+<script>
+	document.getElementById("name").addEventListener('keypress', (e) => {
+        var key = e.code;
+        if (key === 'Space' || e.key === ' ') {
+            e.preventDefault();
+        }
+    })
+</script>
 </html>

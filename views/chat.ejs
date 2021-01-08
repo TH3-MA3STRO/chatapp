@@ -98,9 +98,10 @@
     const typer = document.getElementById('typers')
     const socket = io();
     const username = JSON.parse('<%- userjs %>').username
-    var room = JSON.parse('<%- roomjs %> ').name
+    var roomname = JSON.parse('<%- roomjs %> ').name
+    var roomid = JSON.parse('<%- roomjs %> ').id
     //Join room
-    socket.emit("joinRoom", { username, room });
+    socket.emit("joinRoom", { username, roomname, roomid });
 
     // can be tweaked to display online users
     socket.on("roomUsers", ({ room, users }) => {
@@ -162,7 +163,7 @@
     form.addEventListener("submit", (e) => {
       e.preventDefault();
       const msg = e.target.elements.msg.value;
-      socket.emit("chatMsg", msg);
+      socket.emit("chatMsg", {msg:msg, roomid:roomid});
       e.target.elements.msg.value = "";
       e.target.elements.msg.focus();
     });
@@ -190,9 +191,9 @@
     //Listener for typing event
     form.addEventListener("input", (e) => {
       if (e.target.value !== "") {
-        socket.emit("typing", { username, room });
+        socket.emit("typing", { username, roomname });
       } else {
-        socket.emit("typing_remove", room);
+        socket.emit("typing_remove", roomname);
       }
     });
 
@@ -207,6 +208,12 @@
       chatDiv.appendChild(div);
     }
 
+    document.getElementById("username").addEventListener('keypress', (e) => {
+      var key = e.code;
+      if (key === 'Space' || e.key === ' ') {
+          e.preventDefault();
+      }
+  })
 
   </script>
 </body>

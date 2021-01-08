@@ -42,6 +42,12 @@
             submit.disabled = true
         }
     })
+    uname.addEventListener('keypress', (e) => {
+        var key = e.code;
+        if (key === 'Space' || e.key === ' ') {
+            e.preventDefault();
+        }
+    })
     name.addEventListener('input', e => {
         if (actname !== e.target.value) {
             submit.disabled = false

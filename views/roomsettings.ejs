@@ -71,6 +71,12 @@
                 submitbtn.disabled = true
             }
         })
+        inputn.addEventListener('keypress', (e) => {
+            var key = e.code;
+            if (key === 'Space' || e.key === ' ') {
+                e.preventDefault();
+            }
+        })
         changebtns = () => {
             if (window.innerWidth < 1000) {
                 closebtn.innerHTML = '<i class="fas fa-window-close"></i>'

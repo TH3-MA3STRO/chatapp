@@ -103,7 +103,6 @@ a {
 }
 
 .sidenav .aside .ac-info {
-  width: 100%;
   font-size: larger;
   padding: 0.8em;
   padding-left: 0.625em;
@@ -143,7 +142,6 @@ a {
 
 .menus a {
   padding: 10px 20px;
-  width: 70%;
   border-collapse: separate;
   border-bottom: 0;
   position: relative;
@@ -376,3 +374,11 @@ a {
 }
 
 /*# sourceMappingURL=first.css.map */
+
+.rname, .rmem {
+  white-space: nowrap;
+  width: 100%;                   /* IE6 needs any width */
+  overflow: hidden;              /* "overflow" value must be different from  visible"*/ 
+  -o-text-overflow: ellipsis;    /* Opera < 11*/
+  text-overflow:    ellipsis;    /* IE, Safari (WebKit), Opera >= 11, FF > 6 */
+}

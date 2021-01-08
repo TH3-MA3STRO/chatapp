@@ -1,4 +1,5 @@
 <%- include('partials/head') %>
+<link rel="stylesheet" href="/css/theme.css">
 <%- include('partials/nav') %>
 <div class="sidenav" id="mynav">
     <div class="aside">
@@ -33,14 +34,17 @@
             <% if (rooms.length>0) { %>
             <% rooms.forEach(room => { %>
             <div class="mails" onclick="location.href='/room/<%= room.id %>'">
-                <h2><%= room.name %></h2>
-                <p>
+                <h2 class="rname"><%= room.name %></h2>
+                <p class="rmem">
                     <%= Object.keys(room.membersData).join(', ') %>
                 </p>
             </div>
             <% }) %>
+            <% } else { %>
+                <h2>You don't have any room<br></h2>
+                <p><a href="/invitations">Click here</a> to create a room</p>
             <% } %>
-        </div>
+            </div>
     </div>
 </div>
 <%- include('partials/bottomnav') %>

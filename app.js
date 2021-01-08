@@ -62,14 +62,14 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true }, (err, 
   console.log('Connected....');
 
   io.on("connection", (socket) => {
-    socket.on("joinRoom", ({ username, room }) => {
+    socket.on("joinRoom", ({ username, room, roomid }) => {
       const user = userJoin(socket.id, username, room);
 
       //Join room
       socket.join(user.room); //changed
 
       // Get and send chats stored in mongo collection
-      Chat.find({ room: user.room }).limit(100).sort({ _id: 1 })
+      Chat.find({ room: roomid }).limit(100).sort({ _id: 1 })
         .then(messages => {
           socket.emit("prev_messages", messages);
         }).catch(err => { throw err })
@@ -77,11 +77,11 @@ mongoose.connect(db, { useUnifiedTopology: true, useNewUrlParser: true }, (err, 
     });
 
     //Listens for user messages
-    socket.on("chatMsg", (message) => {
+    socket.on("chatMsg", ({msg, roomid}) => {
       const user = getCurrentUser(socket.id);
-      const newMsg = new Chat({ room: user.room, name: user.username, message: message, time: moment().format('h:mm a') }).save().then(
+      const newMsg = new Chat({ room: roomid, name: user.username, message: msg, time: moment().format('h:mm a') }).save().then(
         resp => {
-          io.to(user.room).emit("message", formatMessage(user.username, message));
+          io.to(user.room).emit("message", formatMessage(user.username, msg));
         })
     });
 
